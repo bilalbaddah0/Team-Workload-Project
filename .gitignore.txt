@@ -1,0 +1,16 @@
+# frontend
+node_modules/
+dist/
+.vite/
+
+# backend
+bin/
+obj/
+
+# system
+.vs/
+*.user
+*.log
+
+# env
+.env
