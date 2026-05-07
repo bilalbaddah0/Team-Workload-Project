@@ -125,13 +125,18 @@ function buildCalendarDays(from: string, to: string): CalendarDay[] {
     while (current <= end) {
         const copy = new Date(current);
 
-        days.push({
-            date: copy,
-            key: formatDateInput(copy),
-            dayNumber: copy.getDate(),
-            dayName: copy.toLocaleDateString(undefined, { weekday: "short" }),
-            isToday: copy.getTime() === today.getTime(),
-        });
+      
+        const dayOfWeek = copy.getDay();
+
+        if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+            days.push({
+                date: copy,
+                key: formatDateInput(copy),
+                dayNumber: copy.getDate(),
+                dayName: copy.toLocaleDateString(undefined, { weekday: "short" }),
+                isToday: copy.getTime() === today.getTime(),
+            });
+        }
 
         current.setDate(current.getDate() + 1);
     }
